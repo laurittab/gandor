@@ -1,0 +1,2 @@
+language = "java"
+run = "javac Game1.java && java Game1"
