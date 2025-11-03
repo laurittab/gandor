@@ -57,10 +57,14 @@ public class Game1 {
     String playerName = start.nextLine().trim();
 
     if (playerName.equals(quitA)){
-      quit();return;
+      quit();
+      start.close();
+      return;
     }
     if (playerName.equals(quitB)){
-      quit();return;
+      quit();
+      start.close();
+      return;
     }
 
     System.out.printf("%nHow old are you?%n");
@@ -68,10 +72,13 @@ public class Game1 {
 
     int playerAge = testAge();
     if (playerAge == 0){
-      quit();return;
+      quit();
+      start.close();
+      return;
     }
     if (playerAge < 18){
       System.out.printf("%nSorry. You need to be 18 or over to play this game.%n");
+      start.close();
       return;
     }
 
@@ -212,6 +219,9 @@ public class Game1 {
       if (attempts==50){ System.out.printf("%n%n%s, %s. %n%s%s %n", warnYELLOW+"You've had too many attempts", wanderer.getName(), "Better luck next time.", resetCOLOUR); quit(); break bridge; }
     }//end of while loop
 
+    start.close();
+    input.close();
+
   }//end of main function
 
 
@@ -242,7 +252,9 @@ public class Game1 {
       }
       catch (NumberFormatException e){System.out.printf("You need to enter a valid number for your age.%n");
       }
-    } return validAge;
+    } 
+    age.close();
+    return validAge;
   }//end of test age method
 
 
@@ -253,6 +265,7 @@ public class Game1 {
    * @return none
   */
     System.out.printf("%nThank you for playing...Good bye.");
+    
   }//end of quit method
 
 
